@@ -6,13 +6,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import SignUp from './pages/Authentication/Authentication.jsx';
+import Authentication from './pages/Authentication/Authentication.jsx';
 import { GlobalStyled } from './GlobalStyled.jsx';
 
 const router = createBrowserRouter([
   { 
     path: "/",
-    element: <SignUp />
+    element: <Authentication />
   }
 ])
 
