@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import NavBar from "../../../components/Navbar/Navbar";
 import {
   DisplaySection,
@@ -15,14 +15,16 @@ export default function HomeUser() {
           <section>
             <ul>
               <li>
-                <NavLink>Minhas Salas</NavLink>
+                <NavLink to={`/salas`}>Minhas Salas</NavLink>
               </li>
               <li>
-                <NavLink>Solicitações</NavLink>
+                <NavLink to={`/solicitacoes`}>Solicitações</NavLink>
               </li>
             </ul>
           </section>
-          <DisplaySection>Hola</DisplaySection>
+          <DisplaySection>
+            <Outlet />
+          </DisplaySection>
         </MainSection>
       </HomeUserContainer>
     </>
