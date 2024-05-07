@@ -7,17 +7,31 @@ import {
   NavLink,
   SideBar,
 } from "./HomeUserStyled";
+import { useContext } from "react";
+import { UserContext } from "../../../Context/UserContext";
 
 export default function HomeUser() {
+  const { user } = useContext(UserContext);
   return (
     <>
       <HomeUserContainer>
         <NavBar />
         <MainSection>
           <SideBar>
-            <NavLink to={`/user/salas`}>Minhas Salas</NavLink>
+            {user.role === "admin" && (
+              <>
+                <NavLink to={`/user/salas/todas`}>Salas</NavLink>
+                <NavLink to={`/user/salas/livres`}>Livres</NavLink>
+                <NavLink to={`/user/salas/ocupadas`}>Ocupadas</NavLink>
+              </>
+            )}
+            {(user.role === "professor" || user.role === "student") && (
+              <>
+                <NavLink to={`/user/salas/todas`}>Minhas Salas</NavLink>
 
-            <NavLink to={`/user/solicitacoes`}>Solicitações</NavLink>
+                <NavLink to={`/user/solicitacoes`}>Solicitações</NavLink>
+              </>
+            )}
           </SideBar>
           <DisplaySection>
             <Outlet />
