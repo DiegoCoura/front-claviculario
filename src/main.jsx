@@ -8,13 +8,13 @@ import ClassRequests from "./pages/User/ClassRequests/ClassRequests.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/user",
     element: <HomeUser />,
     children: [{
-      path: "/salas",
+      path: "/user/salas",
       element: <ClassRooms />
     },{
-      path: "/solicitacoes",
+      path: "/user/solicitacoes",
       element: <ClassRequests />
     }]
   },

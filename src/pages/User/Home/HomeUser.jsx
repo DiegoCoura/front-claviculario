@@ -1,9 +1,11 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavBar from "../../../components/Navbar/Navbar";
 import {
   DisplaySection,
   HomeUserContainer,
   MainSection,
+  NavLink,
+  SideBar,
 } from "./HomeUserStyled";
 
 export default function HomeUser() {
@@ -12,16 +14,11 @@ export default function HomeUser() {
       <HomeUserContainer>
         <NavBar />
         <MainSection>
-          <section>
-            <ul>
-              <li>
-                <NavLink to={`/salas`}>Minhas Salas</NavLink>
-              </li>
-              <li>
-                <NavLink to={`/solicitacoes`}>Solicitações</NavLink>
-              </li>
-            </ul>
-          </section>
+          <SideBar>
+            <NavLink to={`/user/salas`}>Minhas Salas</NavLink>
+
+            <NavLink to={`/user/solicitacoes`}>Solicitações</NavLink>
+          </SideBar>
           <DisplaySection>
             <Outlet />
           </DisplaySection>
