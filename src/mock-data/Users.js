@@ -1,0 +1,50 @@
+export const Users = [
+  {
+    name: "Jussaro Cleber",
+    role: "student",
+    phone: "(11)9999-9999",
+    email: "jusarinho@email.com",
+    password: "123456",
+    classrooms: ["A-107B", "B-207"],
+  },
+  {
+    name: "Clovis Ravazzi",
+    role: "student",
+    phone: "(11)9999-9999",
+    email: "clovis@email.com",
+    password: "123456",
+    classrooms: ["A-107B"],
+  },
+  {
+    name: "Ronaldão Felpudo",
+    role: "student",
+    phone: "(11)9999-9999",
+    email: "felpudinho@email.com",
+    password: "123456",
+    classrooms: ["B-207", "C-100B"],
+  },
+  {
+    name: "Rafael Saitama",
+    role: "student",
+    phone: "(11)9999-9999",
+    email: "rafael@email.com",
+    password: "123456",
+    classrooms: ["B-207"],
+  },
+  {
+    name: "Crotilde Crack",
+    role: "student",
+    phone: "(11)9999-9999",
+    email: "crotilde@email.com",
+    password: "123456",
+    classrooms: ["C-100B"],
+  },
+  {
+    name: "Sara Pinto",
+    role: "professor",
+    phone: "(11)9999-9999",
+    email: "sara@email.com",
+    password: "123456",
+    classrooms: ["B-207", "C-100B"],
+  }
+];
