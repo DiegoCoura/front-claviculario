@@ -11,6 +11,11 @@ import Authentication from "./pages/Authentication/Authentication.jsx";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Authentication />,
+    errorElement: <ErrorPage />
+  },
+  {
     path: "/user",
     element: <HomeUser />,
     errorElement: <ErrorPage />,
