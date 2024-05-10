@@ -4,6 +4,7 @@ export const InputSpace = styled.input`
   padding: 1rem;
   border-radius: 7px;
   border: 1px solid #ccc;
+  text-align: center;
 `;
 
 export const TextareaSpace = styled.textarea`
