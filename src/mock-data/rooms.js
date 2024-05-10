@@ -1,4 +1,4 @@
-export const rooms = [
+export const roomsDB = [
   {
     room: "A-107B",
     status: "livre",
