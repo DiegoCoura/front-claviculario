@@ -1,5 +1,13 @@
-import { ButtonSpace } from "./ButtonStyled"
+import { ButtonSpace } from "./ButtonStyled";
 
-export default function Button ({type, text}){
-    return <ButtonSpace type={type}>{text}</ButtonSpace>
+export default function Button({
+  type,
+  text,
+  handleClick,
+}) {
+  return (
+    <ButtonSpace type={type} onClick={handleClick}>
+      {text}
+    </ButtonSpace>
+  );
 }
