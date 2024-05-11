@@ -1,10 +1,10 @@
-export const getUser = (allUsers, singleUser) => {
-  const currentUser = allUsers.find(
+export const getUser = (usersDB, singleUser) => {
+  const currentUser = usersDB.find(
     (person) => person.name === singleUser.name
   );
   return currentUser;
 };
 
-export const getRoom = (allRooms, currentRoom) => {
-  return allRooms.find((item) => item.room === currentRoom);
+export const getRoom = (roomsDB, currentRoom) => {
+  return roomsDB.find((item) => item.room === currentRoom);
 };
