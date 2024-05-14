@@ -33,8 +33,15 @@ export const ListContainer = styled.ul`
     background-color: #e7e7e7;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 20px;
+    padding: 10px 20px;
     border-radius: 8px;
     margin-bottom: 8px;
   }
+`;
+
+export const Status = styled.div`
+  background-color: tomato;
+  border-radius: 8px;
+  color: #fff;
+  padding: 4px 10px;
 `;
