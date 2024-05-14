@@ -10,6 +10,7 @@ import {
   ListContainer,
   RequestContainer,
   ResultContainer,
+  Status,
 } from "./ClassRequestsStyled";
 import { UserContext } from "../../../Context/UserContext";
 
@@ -32,10 +33,16 @@ export default function ClassRequests() {
     reset();
   };
 
+  const onAccept = (e) => {
+    console.log(e.target);
+    console.log(roomRequests);
+  };
+
   const onRequest = () => {
     let currRequest = {
+      id: currentRoom.room,
       room: currentRoom.room,
-      aluno: user.name,
+      name: user.name,
       phone: user.phone,
       status: "pendente",
     };
@@ -44,6 +51,7 @@ export default function ClassRequests() {
     );
     if (dupleRequest === true) return;
     setCurrentRequest(currRequest);
+    console.log(currRequest);
     roomRequests.push(currRequest);
   };
 
@@ -51,21 +59,25 @@ export default function ClassRequests() {
   if (user.role === "student") {
     requestsList = roomRequests.map((req) => {
       return (
-        <div key={req.room}>
-          Sala: {req.room} - Status: {req.status}
-        </div>
+        <li key={req.id}>
+          <div>Sala: {req.room}</div>
+          <Status>{req.status}</Status>
+        </li>
       );
     });
   } else if (user.role === "professor") {
     requestsList = roomRequests.map((req) => {
       return (
-        <li key={`${req.room}-${req.phone}`}>
+        <li key={req.id}>
           <div>
-            Sala: {req.room} - {req.aluno} - cel: {req.phone} - Status:{" "}
-            {req.status}
+            Sala: {req.room} - {req.name} - cel: {req.phone}
           </div>
           <div>
-            <Button text={"Aprovar"} type={"button"}></Button>
+            <Button
+              text={"Aprovar"}
+              type={"button"}
+              handleClick={(e) => onAccept(e)}
+            ></Button>
             <Button className={"red"} text={"Recusar"} type={"button"}></Button>
           </div>
         </li>

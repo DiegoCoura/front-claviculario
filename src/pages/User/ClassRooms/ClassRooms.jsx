@@ -3,6 +3,7 @@ import { UserContext } from "../../../Context/UserContext";
 import { Users } from "../../../mock-data/Users";
 import { getRoom, getUser } from "../../../utils/getFunctions";
 import { roomsDB } from "../../../mock-data/rooms";
+import { ClassRoomsContainer, Status } from "./ClassRoomsStyled";
 
 export default function ClassRooms() {
   const { user } = useContext(UserContext);
@@ -11,12 +12,17 @@ export default function ClassRooms() {
 
   const currUsersRooms = currUser.classrooms.map((room) => {
     let currRoom = getRoom(roomsDB, room);
-    return <div key={room}>{currRoom.room} / {currRoom.status}</div>;
+    return (
+      <li key={room}>
+        <div>{currRoom.room}</div>
+        <Status>{currRoom.status}</Status>
+      </li>
+    );
   });
 
   return (
     <>
-      {currUsersRooms}
+      <ClassRoomsContainer>{currUsersRooms}</ClassRoomsContainer>
     </>
   );
 }
