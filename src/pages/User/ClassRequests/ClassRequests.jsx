@@ -1,5 +1,9 @@
 import { useContext, useState } from "react";
-import { getRoom } from "../../../utils/getFunctions";
+import {
+  addUserToRoom,
+  deleteRequest,
+  getRoom,
+} from "../../../utils/helperFunctions";
 import { useForm } from "react-hook-form";
 import Input from "../../../components/Input/Input";
 import { roomsDB } from "../../../mock-data/rooms";
@@ -17,8 +21,8 @@ import { UserContext } from "../../../Context/UserContext";
 export default function ClassRequests() {
   const { user } = useContext(UserContext);
   const [currentRoom, setCurrentRoom] = useState("");
-  const [currentRequest, setCurrentRequest] = useState({});
-
+  const [currentRequests, setCurrentRequests] = useState(roomRequests);
+  
   const {
     register: registerSearch,
     handleSubmit: handleSearch,
@@ -34,24 +38,37 @@ export default function ClassRequests() {
   };
 
   const onAccept = (e) => {
-    console.log(e.target);
-    console.log(roomRequests);
+    const selectedRoom = e.target.id.split("--")[1];
+    const acceptedReq = roomRequests.find((req) => req.id === selectedRoom);
+    addUserToRoom(roomsDB, acceptedReq);
+
+    const filteredReqs = currentRequests.filter((req) => req.id != selectedRoom);
+    setCurrentRequests(filteredReqs);
+    deleteRequest(roomRequests, selectedRoom);
+  };
+
+  const onReject = (e) => {
+    const rejectedReq = e.target.id.split("--")[1];
+    const filteredReqs = currentRequests.filter((req) => req.id != rejectedReq);
+    setCurrentRequests(filteredReqs);
+    deleteRequest(roomRequests, rejectedReq);
   };
 
   const onRequest = () => {
     let currRequest = {
-      id: currentRoom.room,
+      id: `${currentRoom.room}_${user.email}`,
       room: currentRoom.room,
       name: user.name,
+      role: user.role,
       phone: user.phone,
+      email: user.email,
       status: "pendente",
     };
     let dupleRequest = roomRequests.some(
       (request) => request.room === currRequest.room
     );
     if (dupleRequest === true) return;
-    setCurrentRequest(currRequest);
-    console.log(currRequest);
+    setCurrentRequests((prevReqs) => [...prevReqs, currRequest]);
     roomRequests.push(currRequest);
   };
 
@@ -74,11 +91,18 @@ export default function ClassRequests() {
           </div>
           <div>
             <Button
+              id={`accept--${req.id}`}
               text={"Aprovar"}
               type={"button"}
               handleClick={(e) => onAccept(e)}
             ></Button>
-            <Button className={"red"} text={"Recusar"} type={"button"}></Button>
+            <Button
+              id={`reject--${req.id}`}
+              className={"red"}
+              text={"Recusar"}
+              type={"button"}
+              handleClick={(e) => onReject(e)}
+            ></Button>
           </div>
         </li>
       );
