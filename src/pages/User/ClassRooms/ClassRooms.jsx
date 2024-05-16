@@ -4,7 +4,9 @@ import { Users } from "../../../mock-data/Users";
 import { getRoom, getUser } from "../../../utils/helperFunctions";
 import { roomsDB } from "../../../mock-data/rooms";
 import {
+  BackButton,
   ClassRoomsContainer,
+  ListContainer,
   SingleRoomContainer,
   Status,
 } from "./ClassRoomsStyled";
@@ -29,13 +31,13 @@ export default function ClassRooms() {
       </button>
     );
   });
-  let currRoomUsersList
+  let currRoomUsersList;
   if (currRoom) {
     currRoomUsersList = currRoom.users.map((person) => {
       return (
         <li key={person.email}>
           <div>
-            {`${person.name} - ${person.phone}`}
+            {`${person.name} - ${person.role} - ${person.phone} - ${person.email}`}
           </div>
           <div>
             <button>Remover</button>
@@ -49,8 +51,11 @@ export default function ClassRooms() {
     <>
       {(currRoom && (
         <SingleRoomContainer>
-          <h1>SALA: {currRoom.room}</h1>
-          {currRoomUsersList}
+          <ListContainer>
+            <h1>SALA: {currRoom.room}</h1>
+            {currRoomUsersList}
+          </ListContainer>
+          <BackButton onClick={() => setCurrRoom("")}>voltar</BackButton>
         </SingleRoomContainer>
       )) || <ClassRoomsContainer>{currUserRooms}</ClassRoomsContainer>}
     </>
