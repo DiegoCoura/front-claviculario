@@ -38,7 +38,30 @@ export const SingleRoomContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 20px;
+  gap: 1rem;
+  height: 100%;
+  justify-content: space-between;
+`;
+
+export const BackButton = styled.button`
+  background-color: tomato;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+export const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  overflow: overlay;
 
   h1 {
     margin: 1rem auto 2rem;
@@ -52,7 +75,6 @@ export const SingleRoomContainer = styled.div`
     padding: 10px 20px;
     border-radius: 8px;
     margin-bottom: 8px;
-    width: 100%;
   }
 
   button {
