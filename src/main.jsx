@@ -21,7 +21,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/user/salas/todas",
+        index: true, element: <ClassRooms />,
+      },
+      {
+        path: "/user/salas",
         element: <ClassRooms />,
       },
       {
