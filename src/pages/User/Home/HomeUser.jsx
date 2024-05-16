@@ -20,14 +20,14 @@ export default function HomeUser() {
           <SideBar>
             {user.role === "admin" && (
               <>
-                <NavLink to={`/user/salas/todas`}>Salas</NavLink>
+                <NavLink to={`/user/salas`}>Salas</NavLink>
                 <NavLink to={`/user/salas/livres`}>Livres</NavLink>
                 <NavLink to={`/user/salas/ocupadas`}>Ocupadas</NavLink>
               </>
             )}
             {(user.role === "professor" || user.role === "student") && (
               <>
-                <NavLink to={`/user/salas/todas`}>Minhas Salas</NavLink>
+                <NavLink to={`/user/salas`}>Minhas Salas</NavLink>
 
                 <NavLink to={`/user/solicitacoes`}>Solicitações</NavLink>
               </>
