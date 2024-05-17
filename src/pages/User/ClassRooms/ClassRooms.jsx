@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../../Context/UserContext";
-import { Users } from "../../../mock-data/Users";
-import { getRoom, getUser } from "../../../utils/helperFunctions";
+import { getRoom } from "../../../utils/helperFunctions";
 import { roomsDB } from "../../../mock-data/rooms";
 import {
   BackButton,
@@ -15,17 +14,30 @@ export default function ClassRooms() {
   const { user } = useContext(UserContext);
   const [currRoom, setCurrRoom] = useState("");
 
-  const currUser = getUser(Users, user);
-
   const selectRoom = (e) => {
     const tempRoom = getRoom(roomsDB, e.target.id);
     setCurrRoom(tempRoom);
   };
 
-  const currUserRooms = currUser.classrooms.map((room) => {
+  let userRoomsArray;
+  if (user.role === "admin") {
+    userRoomsArray = roomsDB.map(({ room }) => room);
+  } else {
+    userRoomsArray = user.classrooms;
+  }
+
+  const roomsList = userRoomsArray.map((room) => {
     let currRoom = getRoom(roomsDB, room);
     return (
-      <button key={room} id={room} onClick={(e) => selectRoom(e)}>
+      <button
+        key={room}
+        id={room}
+        onClick={(e) =>
+          user.role === "professor" || user.role === "admin"
+            ? selectRoom(e)
+            : null
+        }
+      >
         <div>{currRoom.room}</div>
         <Status>{currRoom.status}</Status>
       </button>
@@ -57,7 +69,7 @@ export default function ClassRooms() {
           </ListContainer>
           <BackButton onClick={() => setCurrRoom("")}>voltar</BackButton>
         </SingleRoomContainer>
-      )) || <ClassRoomsContainer>{currUserRooms}</ClassRoomsContainer>}
+      )) || <ClassRoomsContainer>{roomsList}</ClassRoomsContainer>}
     </>
   );
 }
