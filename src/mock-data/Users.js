@@ -1,7 +1,7 @@
 export const Users = [
   {
     name: "Jussaro Cleber",
-    role: "professor",
+    role: "admin",
     phone: "(11)9999-9999",
     email: "jusarinho@email.com",
     password: "123456",

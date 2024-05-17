@@ -2,7 +2,22 @@ export const roomsDB = [
   {
     room: "A-107B",
     status: "livre",
-    users: []
+    users: [{
+      name: "Jussaro Cleber",
+      role: "student",
+      phone: "(11)9999-9999",
+      email: "jusarinho@email.com",
+      password: "123456",
+      classrooms: ["A-107B", "B-207"],
+    },
+    {
+      name: "Clovis Ravazzi",
+      role: "admin",
+      phone: "(11)9999-9999",
+      email: "clovis@email.com",
+      password: "123456",
+      classrooms: ["A-107B"],
+    }]
   },
   {
     room: "B-207",
