@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         index: true, element: <ClassRooms />,
       },
       {
-        path: "/user/salas",
+        path: "/user/salas/todas",
         element: <ClassRooms />,
       },
       {
