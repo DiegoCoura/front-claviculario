@@ -22,7 +22,7 @@ export default function ClassRequests() {
   const { user } = useContext(UserContext);
   const [currentRoom, setCurrentRoom] = useState("");
   const [currentRequests, setCurrentRequests] = useState(roomRequests);
-  
+
   const {
     register: registerSearch,
     handleSubmit: handleSearch,
@@ -42,7 +42,9 @@ export default function ClassRequests() {
     const acceptedReq = roomRequests.find((req) => req.id === selectedRoom);
     addUserToRoom(roomsDB, acceptedReq);
 
-    const filteredReqs = currentRequests.filter((req) => req.id != selectedRoom);
+    const filteredReqs = currentRequests.filter(
+      (req) => req.id != selectedRoom
+    );
     setCurrentRequests(filteredReqs);
     deleteRequest(roomRequests, selectedRoom);
   };
@@ -75,12 +77,14 @@ export default function ClassRequests() {
   let requestsList;
   if (user.role === "student") {
     requestsList = roomRequests.map((req) => {
-      return (
-        <li key={req.id}>
-          <div>Sala: {req.room}</div>
-          <Status>{req.status}</Status>
-        </li>
-      );
+      if (req.email === user.email) {
+        return (
+          <li key={req.id}>
+            <div>Sala: {req.room}</div>
+            <Status>{req.status}</Status>
+          </li>
+        );
+      }
     });
   } else if (user.role === "professor") {
     requestsList = roomRequests.map((req) => {
