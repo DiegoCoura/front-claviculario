@@ -1,18 +1,40 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../../Context/UserContext";
-import { getRoom } from "../../../utils/helperFunctions";
+import { getRoom, getUserByEmail } from "../../../utils/helperFunctions";
 import { roomsDB } from "../../../mock-data/rooms";
 import {
   BackButton,
   ClassRoomsContainer,
-  ListContainer,
+  UsersListContainer,
   SingleRoomContainer,
   Status,
+  RoomsList,
 } from "./ClassRoomsStyled";
+import { useForm } from "react-hook-form";
+import { RequestContainer } from "../ClassRequests/ClassRequestsStyled";
+import Input from "../../../components/Input/Input";
+import Button from "../../../components/Button/Button";
+import { Users } from "../../../mock-data/Users";
 
 export default function ClassRooms() {
   const { user } = useContext(UserContext);
   const [currRoom, setCurrRoom] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
+
+  const {
+    register: registerSearch,
+    handleSubmit: handleSearch,
+    reset,
+  } = useForm();
+
+  const onSearch = (data) => {
+    if (!data.email) return;
+    const { email } = data;
+    const searchUser = getUserByEmail(Users, email.toLowerCase());
+    setCurrentUser(searchUser);
+
+    reset();
+  };
 
   const selectRoom = (e) => {
     const tempRoom = getRoom(roomsDB, e.target.id);
@@ -63,13 +85,28 @@ export default function ClassRooms() {
     <>
       {(currRoom && (
         <SingleRoomContainer>
-          <ListContainer>
+          <UsersListContainer>
             <h1>SALA: {currRoom.room}</h1>
             {currRoomUsersList}
-          </ListContainer>
+          </UsersListContainer>
           <BackButton onClick={() => setCurrRoom("")}>voltar</BackButton>
         </SingleRoomContainer>
-      )) || <ClassRoomsContainer>{roomsList}</ClassRoomsContainer>}
+      )) || (
+        <ClassRoomsContainer>
+          <RequestContainer>
+            <form action="" onSubmit={handleSearch(onSearch)}>
+              <Input
+                type="text"
+                placeholder="email"
+                name="email"
+                register={registerSearch}
+              />
+              <Button type={"submit"} text={"Buscar usuário"} />
+            </form>
+          </RequestContainer>
+          <RoomsList>{roomsList}</RoomsList>
+        </ClassRoomsContainer>
+      )}
     </>
   );
 }

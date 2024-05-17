@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ClassRoomsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
   gap: 1rem;
 
   button {
@@ -56,7 +58,11 @@ export const BackButton = styled.button`
   }
 `;
 
-export const ListContainer = styled.div`
+export const RoomsList = styled.div`
+
+`
+
+export const UsersListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
