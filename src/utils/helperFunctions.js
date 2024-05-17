@@ -3,6 +3,11 @@ export const getUser = (usersDB, singleUser) => {
   return currentUser;
 };
 
+export const getUserByEmail = (usersDB, userEmail) => {
+  const currentUser = usersDB.find((person) => person.email === userEmail);
+  return currentUser;
+};
+
 export const getRoom = (roomsDB, currentRoom) => {
   return roomsDB.find((item) => item.room === currentRoom);
 };
