@@ -9,6 +9,7 @@ import {
   SingleRoomContainer,
   Status,
   RoomsList,
+  RoomButton,
 } from "./ClassRoomsStyled";
 import { useForm } from "react-hook-form";
 import { RequestContainer } from "../ClassRequests/ClassRequestsStyled";
@@ -51,7 +52,7 @@ export default function ClassRooms() {
   const roomsList = userRoomsArray.map((room) => {
     let currRoom = getRoom(roomsDB, room);
     return (
-      <button
+      <RoomButton
         key={room}
         id={room}
         onClick={(e) =>
@@ -62,7 +63,7 @@ export default function ClassRooms() {
       >
         <div>{currRoom.room}</div>
         <Status>{currRoom.status}</Status>
-      </button>
+      </RoomButton>
     );
   });
   let currRoomUsersList;

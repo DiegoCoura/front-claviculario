@@ -10,7 +10,7 @@ export const ButtonSpace = styled.button`
   transition: all 0.4s ease-in-out;
   cursor: pointer;
   border-radius: 0.3rem;
-  font-family: Roboto, arial;
+  font-family: "Roboto", arial;
   width: auto;
   font-weight: 500;
   letter-spacing: 0.1rem;

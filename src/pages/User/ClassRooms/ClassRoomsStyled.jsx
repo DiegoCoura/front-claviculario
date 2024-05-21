@@ -5,26 +5,26 @@ export const ClassRoomsContainer = styled.div`
   flex-direction: column;
   align-items: stretch;
   gap: 1rem;
+`;
 
-  button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 120px;
-    cursor: pointer;
-    background-color: #e7e7e7;
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 1rem;
-    transition: 0.2s ease-out;
-  }
+export const RoomButton = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  cursor: pointer;
+  background-color: #e7e7e7;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  transition: 0.2s ease-out;
 
-  button:hover {
+  &:hover {
     transform: scale(1.05);
   }
-  button > * {
+  & > * {
     pointer-events: none;
   }
 `;
@@ -59,8 +59,9 @@ export const BackButton = styled.button`
 `;
 
 export const RoomsList = styled.div`
-
-`
+  display: flex;
+  gap: 1rem;
+`;
 
 export const UsersListContainer = styled.div`
   display: flex;
