@@ -93,7 +93,7 @@ export default function ClassRooms() {
     );
   });
   let currRoomUsersList;
-  if (currRoom) {
+  if (currRoom && user.role === "professor") {
     currRoomUsersList = currRoom.users.map((person) => {
       return (
         <li key={person.email}>
