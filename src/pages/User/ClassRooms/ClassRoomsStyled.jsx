@@ -97,3 +97,21 @@ export const UsersListContainer = styled.div`
     transform: scale(1.05);
   }
 `;
+
+export const UserContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+`;
+
+export const KeyExchangeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const RoomUserContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
