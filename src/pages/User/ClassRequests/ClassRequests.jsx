@@ -81,7 +81,7 @@ export default function ClassRequests() {
         return (
           <li key={req.id}>
             <div>Sala: {req.room}</div>
-            <Status>{req.status}</Status>
+            <Status>{req.status === "livre" || "ocupada"}</Status>
           </li>
         );
       }
