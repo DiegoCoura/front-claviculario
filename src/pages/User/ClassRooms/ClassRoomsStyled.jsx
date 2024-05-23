@@ -34,6 +34,10 @@ export const Status = styled.div`
   border-radius: 8px;
   color: #fff;
   padding: 4px 10px;
+
+  &.red{
+    background-color: tomato;
+  }
 `;
 
 export const SingleRoomContainer = styled.div`

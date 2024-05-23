@@ -86,7 +86,9 @@ export default function ClassRooms() {
         }
       >
         <div>{currRoom.room}</div>
-        <Status>{currRoom.status != "livre" ? "ocupada" : "livre"}</Status>
+        <Status className={currRoom.status != "livre" ? "red" : ""}>
+          {currRoom.status != "livre" ? "ocupada" : "livre"}
+        </Status>
       </RoomButton>
     );
   });
