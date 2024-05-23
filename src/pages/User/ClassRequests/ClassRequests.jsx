@@ -81,7 +81,7 @@ export default function ClassRequests() {
         return (
           <li key={req.id}>
             <div>Sala: {req.room}</div>
-            <Status>{req.status === "livre" || "ocupada"}</Status>
+            <Status>{req.status}</Status>
           </li>
         );
       }
@@ -127,7 +127,7 @@ export default function ClassRequests() {
             <Button type={"submit"} text={"Buscar Sala"} />
           </form>
         </RequestContainer>
-        {currentRoom && (
+        {currentRoom && user.role === "student" && (
           <ResultContainer>
             <div>{currentRoom.room}</div>
             <Button
