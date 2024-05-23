@@ -35,7 +35,7 @@ export const Status = styled.div`
   color: #fff;
   padding: 4px 10px;
 
-  &.red{
+  &.red {
     background-color: tomato;
   }
 `;
@@ -47,6 +47,7 @@ export const SingleRoomContainer = styled.div`
   gap: 1rem;
   height: 100%;
   justify-content: space-between;
+  padding: 10px 20px;
 `;
 
 export const BackButton = styled.button`
@@ -64,6 +65,7 @@ export const BackButton = styled.button`
 
 export const RoomsList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 `;
 
@@ -112,10 +114,15 @@ export const KeyExchangeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 2rem;
+  background-color: #e7e7e7;
+  padding: 20px;
+  border-radius: 8px;
 `;
 
 export const RoomUserContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 `;

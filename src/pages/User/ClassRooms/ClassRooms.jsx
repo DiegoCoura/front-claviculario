@@ -129,7 +129,8 @@ export default function ClassRooms() {
               <KeyExchangeContainer>
                 <RoomUserContainer>
                   <div>
-                    Usuário: {currRoom.status.deliveredTo.name} Email:{" "}
+                    <h3>Usuário:</h3>
+                    {currRoom.status.deliveredTo.name} Email:{" "}
                     {currRoom.status.deliveredTo.email} Cel:{" "}
                     {currRoom.status.deliveredTo.phone}
                   </div>
