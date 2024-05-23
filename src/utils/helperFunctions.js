@@ -1,3 +1,5 @@
+import { roomsDB } from "../mock-data/rooms";
+
 export const getUser = (usersDB, singleUser) => {
   const currentUser = usersDB.find((person) => person.name === singleUser.name);
   return currentUser;
@@ -27,6 +29,38 @@ export const addUserToRoom = (roomsDB, currentReq) => {
         });
       }
   });
+};
+
+export const deliverKey = (deliveredBy, deliveredTo, room) => {
+  const roomIndex = roomsDB.findIndex((item) => item.room === room);
+
+  if (roomsDB[roomIndex].status != "livre") return;
+
+  const fullDate = new Date();
+  const formattedDate = fullDate.toLocaleString("pt-BR", { timezone: "UTC" });
+
+  const deliveryObj = {
+    deliveredBy: {
+      name: deliveredBy.name,
+      role: deliveredBy.role,
+      email: deliveredBy.email,
+      phone: deliveredBy.phone,
+    },
+    deliveredTo: {
+      name: deliveredTo.name,
+      role: deliveredTo.role,
+      email: deliveredTo.email,
+      phone: deliveredTo.phone,
+    },
+    time: formattedDate,
+  };
+
+  roomsDB[roomIndex].status = deliveryObj;
+};
+
+export const returnKey = (room) => {
+  const roomIndex = roomsDB.findIndex((item) => item.room === room);
+  roomsDB[roomIndex].status = "livre";
 };
 
 export const deleteRequest = (requestsDB, reqId) => {
